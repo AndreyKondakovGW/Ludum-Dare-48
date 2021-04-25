@@ -5,13 +5,11 @@ using UnityEngine;
 public class Lift : MonoBehaviour
 {
     public bool attached = false;
-    public Lift conected;
+    public Floor conected;
 
-    public void attachedTo(Lift l){
+    public void attachedTo(Floor l){
         conected = l;
         attached = true;
-        SpriteRenderer m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        m_SpriteRenderer.color = Color.blue;
     }
     // Start is called before the first frame update
     void Start()

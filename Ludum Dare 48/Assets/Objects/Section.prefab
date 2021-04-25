@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5362702369170679153}
   m_Layer: 0
   m_Name: Section
-  m_TagString: Untagged
+  m_TagString: Section
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,4 +46,15 @@ MonoBehaviour:
   sectionName: 
   size: 0
   distaceBeetwenFloors: 30
+  rulesCount: 0
+  rules: 
+  strategy: 0
+  liftPerfs:
+  - {fileID: 1882895241654621205, guid: db42e2db91770984a836ffa6f45ef24d, type: 3}
+  - {fileID: 8087596837158488192, guid: 76751d4719639a0488ef3fc9374fe4bb, type: 3}
+  - {fileID: 1661958348780410963, guid: ae8acf92cb849314b97a46679355b41d, type: 3}
+  - {fileID: 401301776690798033, guid: 892b63281afcd334da28ebd34cce71b5, type: 3}
+  - {fileID: 5334702775320981846, guid: fad04eb5d3d380e4ca25341f846f5ae0, type: 3}
+  - {fileID: 5283744431836476340, guid: 1f3ad45aefd6a2848a0552dc34b359d0, type: 3}
   floorPerf: {fileID: 8685038020943323583, guid: 8058bf5d958c6ec42b3b2706e6e13615, type: 3}
+  floors: []

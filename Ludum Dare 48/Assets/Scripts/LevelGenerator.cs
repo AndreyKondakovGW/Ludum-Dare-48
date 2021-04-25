@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public int sectionSize = 10;
+    public int sectionSize = 20;
     public int currentFloor = 1;
     public Section sectionPerf;
     public Section currensection;
