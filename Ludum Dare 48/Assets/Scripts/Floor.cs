@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject[] roomPerfSolo;
+    [SerializeField]
+    public GameObject[] roomPerfCornersR;
+    [SerializeField]
+    public GameObject[] roomPerfCornersL;
+    [SerializeField]
+    public GameObject[] roomPerfCenter;
+
+    private GameObject[] rooms;
+
     public int liftscount;
     public List<GameObject> liftplaceholders;
     public List<Lift> lifts;
@@ -13,16 +24,6 @@ public class Floor : MonoBehaviour
     private Section controller;
 
     private HashSet<int> conections = new HashSet<int>();
-
-    /*
-    public void generateLifts(){
-        lifts = new Lift[liftscount];
-        for(int i = 0;i<liftscount;i++){
-            lifts[i] = Instantiate(liftPerf);
-            lifts[i].transform.SetParent(transform);
-            lifts[i].transform.position = liftplaceholders[i].transform.position;
-        }
-    }*/
 
     public bool attachedTo(Floor f){
         if (liftplaceholders.Count != 0 && !conections.Contains(f.number)){
@@ -45,6 +46,31 @@ public class Floor : MonoBehaviour
         liftplaceholders.Remove(placeholder);
         l.transform.position = placeholder.transform.position;
         return l;
+    }
+
+    public void GenerateRooms(int size){
+        rooms = new GameObject[size];
+        if (size == 1){
+            rooms[0] = Instantiate(roomPerfSolo[Random.Range(0,roomPerfSolo.Length)]);
+            rooms[0].transform.SetParent(transform);
+            rooms[0].transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            return;
+        }
+        if (size > 1){
+            rooms[0] = Instantiate(roomPerfCornersL[Random.Range(0,roomPerfCornersL.Length)]);
+            rooms[0].transform.SetParent(transform);
+            rooms[0].transform.position = new Vector3(((size / 2) -size + 1)*40, transform.position.y, 0);
+            for (int i = 1;i < size - 1;i++){
+                rooms[i] = Instantiate(roomPerfCenter[Random.Range(0,roomPerfCenter.Length)]);
+                rooms[i].transform.SetParent(transform);
+                rooms[i].transform.position = new Vector3((i - (size / 2))*40, transform.position.y, 0);
+            }
+            rooms[size - 1] = Instantiate(roomPerfCornersR[Random.Range(0,roomPerfCornersR.Length)]);
+            rooms[size - 1].transform.SetParent(transform);
+            rooms[size - 1].transform.position = new Vector3((size - 1 - (size / 2))*40, transform.position.y, 0);
+            return;
+        } 
+        
     }
 
 //   public Lift getNoAttachedLift(){

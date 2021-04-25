@@ -22,6 +22,14 @@ public class Section : MonoBehaviour
     public Floor floorPerf;
     public Floor[] floors;
 
+    public HashSet<int> unvisitFloors;
+
+    public void checkFloor(int n){
+        if (unvisitFloors.Contains(n)){
+            unvisitFloors.Remove(n);
+        }
+    }
+
     public void setPropertice(int s, string n)
     {
         sectionName = n;
@@ -32,9 +40,10 @@ public class Section : MonoBehaviour
         floors = new Floor[size];
         for(int i=0;i<size;i++){
             floors[i] = Instantiate(floorPerf);
-            floors[i].number = i+1;
-            //floors[i].generateLifts();
+            floors[i].number = i + 1;
+            floors[i].transform.SetParent(transform);
             floors[i].transform.position = new Vector3(0, 0 - distaceBeetwenFloors*i, 0);
+            floors[i].GenerateRooms(Random.Range(1,6));
         }
 
         generateRules();
@@ -113,7 +122,10 @@ public class Section : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        unvisitFloors = new HashSet<int>();
+        for (int i=1;i < size;i++){
+            unvisitFloors.Add(i);
+        }
     }
 
     // Update is called once per frame
