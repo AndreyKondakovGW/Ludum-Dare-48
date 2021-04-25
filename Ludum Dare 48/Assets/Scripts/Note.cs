@@ -23,7 +23,7 @@ public class Note : MonoBehaviour
     }
       void OnTriggerStay2D(Collider2D other)
     {
-        if(Input.GetKeyDown("space"))
+        if(Input.GetKeyDown("e"))
         {
             note.SetActive(true);
         }
